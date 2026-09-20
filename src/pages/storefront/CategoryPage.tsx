@@ -68,8 +68,8 @@ export const CategoryPage: React.FC = () => {
       </div>
 
       {/* Products Grid */}
-      <div className="max-w-7xl mx-auto px-6 py-16">
-        <div className="flex items-center justify-between pb-6 mb-8 border-b border-nubl-border/40">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 py-12 sm:py-16">
+        <div className="flex items-center justify-between pb-4 sm:pb-6 mb-6 sm:mb-8 border-b border-nubl-border/40">
           <span className="text-xs text-nubl-muted">
             المتوفر في هذه التشكيلة ({categoryProducts.length} مقتنيات)
           </span>
@@ -82,7 +82,7 @@ export const CategoryPage: React.FC = () => {
           </Link>
         </div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+        <div className="grid grid-cols-2 lg:grid-cols-4 gap-2.5 sm:gap-6">
           {categoryProducts.map((product) => (
             <ProductCard key={product.id} product={product} />
           ))}

@@ -3,14 +3,65 @@
 @tailwind utilities;
 
 @layer base {
-  :root {
+  :root,
+  html.dark,
+  body.dark,
+  [data-theme="dark"] {
     color-scheme: dark;
+    --nubl-obsidian: 11 10 9;         /* #0B0A09 */
+    --nubl-espresso: 21 17 13;        /* #15110D */
+    --nubl-surface: 26 21 18;         /* #1A1512 */
+    --nubl-surfaceLight: 36 30 25;    /* #241E19 */
+    --nubl-brown: 42 33 26;           /* #2A211A */
+    --nubl-border: rgba(185, 151, 91, 0.16);
+    --nubl-borderLight: rgba(255, 255, 255, 0.08);
+    --nubl-gold: 185 151 91;          /* #B9975B */
+    --nubl-goldHover: 203 170 110;    /* #CBAA6E */
+    --nubl-goldMuted: 140 113 66;     /* #8C7142 */
+    --nubl-goldSoft: 232 216 181;     /* #E8D8B5 */
+    --nubl-ivory: 245 241 234;        /* #F5F1EA */
+    --nubl-ivoryDark: 232 225 213;    /* #E8E1D5 */
+    --nubl-muted: 158 151 143;        /* #9E978F */
+    --nubl-subtle: 110 103 96;        /* #6E6760 */
+    --nubl-shadow-luxury: 0 20px 40px -15px rgba(0, 0, 0, 0.7);
+  }
+
+  html.light,
+  body.light,
+  html[data-theme="light"],
+  body[data-theme="light"],
+  .light {
+    color-scheme: light;
+    --nubl-obsidian: 251 249 245;     /* #FBF9F5 Warm Luxury Alabaster */
+    --nubl-espresso: 255 255 255;     /* #FFFFFF Solid Card White */
+    --nubl-surface: 255 255 255;      /* #FFFFFF Pure Card White */
+    --nubl-surfaceLight: 247 245 241; /* #F7F5F1 Subtle Elevated Surface */
+    --nubl-brown: 235 229 220;        /* #EBE5DC Divider */
+    --nubl-border: rgba(200, 188, 172, 0.7);
+    --nubl-borderLight: rgba(0, 0, 0, 0.06);
+    --nubl-gold: 156 122 59;          /* #9C7A3B Rich Regal Contrast Gold */
+    --nubl-goldHover: 136 104 46;     /* #88682E */
+    --nubl-goldMuted: 118 92 41;      /* #765C29 */
+    --nubl-goldSoft: 104 80 34;       /* #685022 */
+    --nubl-ivory: 20 17 15;           /* #14110F Deep Charcoal Espresso Text */
+    --nubl-ivoryDark: 45 38 32;       /* #2D2620 Secondary Text */
+    --nubl-muted: 99 91 82;           /* #635B52 Clean Neutral Contrast Text */
+    --nubl-subtle: 135 126 116;       /* #877E74 */
+    --nubl-shadow-luxury: 0 12px 30px -8px rgba(35, 25, 15, 0.08);
   }
 
   body {
-    background-color: #0B0A09;
-    color: #F5F1EA;
+    background-color: rgb(var(--nubl-obsidian));
+    color: rgb(var(--nubl-ivory));
     font-family: "IBM Plex Sans Arabic", "Tajawal", -apple-system, BlinkMacSystemFont, sans-serif;
+    transition: background-color 0.3s ease, color 0.3s ease;
+  }
+
+  /* Direct Light Mode Body styling */
+  html.light body,
+  body.light {
+    background-color: #FBF9F5 !important;
+    color: #14110F !important;
   }
 
   /* Custom luxury scrollbar */
@@ -20,16 +71,26 @@
   }
 
   ::-webkit-scrollbar-track {
-    background: #0B0A09;
+    background: rgb(var(--nubl-obsidian));
+  }
+
+  html.light ::-webkit-scrollbar-track,
+  .light ::-webkit-scrollbar-track {
+    background: #FBF9F5 !important;
   }
 
   ::-webkit-scrollbar-thumb {
-    background: #2A211A;
+    background: rgb(var(--nubl-brown));
     border-radius: 3px;
   }
 
+  html.light ::-webkit-scrollbar-thumb,
+  .light ::-webkit-scrollbar-thumb {
+    background: #D8CEBE !important;
+  }
+
   ::-webkit-scrollbar-thumb:hover {
-    background: #B9975B;
+    background: rgb(var(--nubl-gold));
   }
 }
 
@@ -40,8 +101,20 @@
     -webkit-text-fill-color: transparent;
   }
 
+  .light .text-gold-gradient,
+  html.light .text-gold-gradient {
+    background: linear-gradient(135deg, #9C7A3B 0%, #6E5425 50%, #9C7A3B 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+
   .border-gold-subtle {
     border-color: rgba(185, 151, 91, 0.2);
+  }
+
+  .light .border-gold-subtle,
+  html.light .border-gold-subtle {
+    border-color: rgba(156, 122, 59, 0.25);
   }
 
   .bg-noise {
@@ -49,9 +122,103 @@
     background-size: 24px 24px;
   }
 
+  .light .bg-noise,
+  html.light .bg-noise {
+    background-image: radial-gradient(rgba(0, 0, 0, 0.03) 1px, transparent 0);
+  }
+
   /* Editorial luxury line clamp and aspect ratios */
   .cinematic-glow {
     box-shadow: 0 0 40px -10px rgba(185, 151, 91, 0.25);
+  }
+
+  .light .cinematic-glow,
+  html.light .cinematic-glow {
+    box-shadow: 0 0 30px -8px rgba(156, 122, 59, 0.2);
+  }
+
+  /* High contrast dark text for gold buttons & obsidian text in light mode */
+  .light .text-nubl-obsidian,
+  html.light .text-nubl-obsidian {
+    color: #0B0A09 !important;
+  }
+
+  .light [class*="bg-nubl-gold"].text-nubl-obsidian,
+  .light [class*="bg-nubl-gold"] .text-nubl-obsidian,
+  .light button[class*="bg-nubl-gold"],
+  .light a[class*="bg-nubl-gold"],
+  html.light [class*="bg-nubl-gold"].text-nubl-obsidian,
+  html.light [class*="bg-nubl-gold"] .text-nubl-obsidian,
+  html.light button[class*="bg-nubl-gold"],
+  html.light a[class*="bg-nubl-gold"] {
+    color: #0B0A09 !important;
+  }
+
+  /* Direct Light Mode Surface & Card Overrides: Crisp, clean, luxury white with elegant borders */
+  .light .bg-nubl-surface,
+  html.light .bg-nubl-surface,
+  .light .bg-nubl-espresso,
+  html.light .bg-nubl-espresso,
+  .light [class*="bg-nubl-espresso"],
+  html.light [class*="bg-nubl-espresso"] {
+    background-color: #FFFFFF !important;
+    border-color: #E6E0D6 !important;
+  }
+
+  .light .bg-nubl-surfaceLight,
+  html.light .bg-nubl-surfaceLight {
+    background-color: #F7F5F1 !important;
+  }
+
+  .light .bg-nubl-obsidian,
+  html.light .bg-nubl-obsidian {
+    background-color: #FBF9F5 !important;
+  }
+
+  /* High contrast typography for all product cards, lists & headers in Light Mode */
+  .light .text-nubl-ivory,
+  html.light .text-nubl-ivory {
+    color: #14110F !important;
+  }
+
+  .light .text-nubl-muted,
+  html.light .text-nubl-muted {
+    color: #635B52 !important;
+  }
+
+  .light .text-nubl-gold,
+  html.light .text-nubl-gold {
+    color: #9C7A3B !important;
+  }
+
+  .light .border-nubl-border,
+  html.light .border-nubl-border {
+    border-color: #E6E0D6 !important;
+  }
+
+  /* Clean inputs, selects and search fields in Light Mode */
+  .light input,
+  .light select,
+  .light textarea,
+  html.light input,
+  html.light select,
+  html.light textarea {
+    background-color: #FFFFFF !important;
+    border-color: #DDD6CA !important;
+    color: #14110F !important;
+  }
+
+  .light input::placeholder,
+  .light textarea::placeholder,
+  html.light input::placeholder,
+  html.light textarea::placeholder {
+    color: #8C8276 !important;
+  }
+
+  /* Range sliders track in light mode */
+  .light input[type="range"],
+  html.light input[type="range"] {
+    background-color: #E8E2D8 !important;
   }
 }
 

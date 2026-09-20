@@ -21,7 +21,7 @@ export const WishlistPage: React.FC = () => {
 
   return (
     <div className="pt-28 pb-24 bg-nubl-obsidian text-nubl-ivory min-h-screen">
-      <div className="max-w-7xl mx-auto px-6">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6">
         <div className="text-center max-w-xl mx-auto mb-12">
           <span className="text-xs uppercase tracking-luxury text-nubl-gold block mb-2">
             مقتنياتك المفضلة
@@ -74,7 +74,7 @@ export const WishlistPage: React.FC = () => {
               </div>
             </div>
 
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+            <div className="grid grid-cols-2 lg:grid-cols-4 gap-2.5 sm:gap-6">
               {wishlist.map((product) => (
                 <ProductCard key={product.id} product={product} />
               ))}

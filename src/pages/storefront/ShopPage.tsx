@@ -92,7 +92,7 @@ export const ShopPage: React.FC = () => {
 
   return (
     <div className="pt-28 pb-24 bg-nubl-obsidian text-nubl-ivory min-h-screen">
-      <div className="max-w-7xl mx-auto px-6">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6">
         {/* Header */}
         <div className="text-center max-w-2xl mx-auto mb-12">
           <span className="text-xs uppercase tracking-luxury text-nubl-gold block mb-2">
@@ -110,10 +110,10 @@ export const ShopPage: React.FC = () => {
         <div className="flex items-center gap-2 overflow-x-auto pb-4 mb-8 border-b border-nubl-border/40 scrollbar-none">
           <button
             onClick={() => handleCategoryChange('all')}
-            className={`px-5 py-2.5 text-xs font-medium tracking-wider whitespace-nowrap transition-colors ${
+            className={`px-5 py-2.5 text-xs font-medium tracking-wider whitespace-nowrap transition-colors rounded-none shadow-sm cursor-pointer ${
               selectedCategory === 'all'
-                ? 'bg-nubl-gold text-nubl-obsidian'
-                : 'bg-nubl-espresso text-nubl-muted hover:text-nubl-ivory border border-nubl-border'
+                ? 'bg-nubl-gold text-[#0B0A09] font-semibold border border-nubl-gold'
+                : 'bg-nubl-surface text-nubl-muted hover:text-nubl-ivory border border-nubl-border/60 hover:border-nubl-gold/40'
             }`}
           >
             جميع المقتنيات ({products.length})
@@ -122,10 +122,10 @@ export const ShopPage: React.FC = () => {
             <button
               key={cat.id}
               onClick={() => handleCategoryChange(cat.slug)}
-              className={`px-5 py-2.5 text-xs font-medium tracking-wider whitespace-nowrap transition-colors ${
+              className={`px-5 py-2.5 text-xs font-medium tracking-wider whitespace-nowrap transition-colors rounded-none shadow-sm cursor-pointer ${
                 selectedCategory === cat.slug
-                  ? 'bg-nubl-gold text-nubl-obsidian'
-                  : 'bg-nubl-espresso text-nubl-muted hover:text-nubl-ivory border border-nubl-border'
+                  ? 'bg-nubl-gold text-[#0B0A09] font-semibold border border-nubl-gold'
+                  : 'bg-nubl-surface text-nubl-muted hover:text-nubl-ivory border border-nubl-border/60 hover:border-nubl-gold/40'
               }`}
             >
               {cat.name}
@@ -134,7 +134,7 @@ export const ShopPage: React.FC = () => {
         </div>
 
         {/* Controls Bar: Search, Mobile Filter Trigger, Sort */}
-        <div className="flex flex-col sm:flex-row items-center justify-between gap-4 mb-8 bg-nubl-espresso/60 p-4 border border-nubl-border">
+        <div className="flex flex-col sm:flex-row items-center justify-between gap-4 mb-8 bg-nubl-surface p-4 border border-nubl-border/60 shadow-sm">
           {/* Live Search */}
           <div className="relative w-full sm:w-80">
             <input
@@ -142,13 +142,13 @@ export const ShopPage: React.FC = () => {
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
               placeholder="ابحث بالاسم أو الفئة..."
-              className="w-full bg-nubl-obsidian border border-nubl-border px-9 py-2 text-xs text-nubl-ivory placeholder:text-nubl-muted/60 focus:outline-none focus:border-nubl-gold"
+              className="w-full bg-nubl-surfaceLight border border-nubl-border/60 px-9 py-2 text-xs text-nubl-ivory placeholder:text-nubl-muted focus:outline-none focus:border-nubl-gold transition-colors"
             />
             <Search className="absolute right-3 top-1/2 -translate-y-1/2 w-4 h-4 text-nubl-gold" />
             {searchQuery && (
               <button
                 onClick={() => setSearchQuery('')}
-                className="absolute left-2.5 top-1/2 -translate-y-1/2 text-nubl-muted hover:text-nubl-ivory"
+                className="absolute left-2.5 top-1/2 -translate-y-1/2 text-nubl-muted hover:text-nubl-ivory cursor-pointer"
               >
                 <X className="w-3.5 h-3.5" />
               </button>
@@ -159,7 +159,7 @@ export const ShopPage: React.FC = () => {
             {/* Mobile Filter Trigger */}
             <button
               onClick={() => setIsMobileFilterOpen(true)}
-              className="lg:hidden flex items-center gap-2 px-4 py-2 bg-nubl-obsidian border border-nubl-border text-xs text-nubl-ivory hover:text-nubl-gold"
+              className="lg:hidden flex items-center gap-2 px-4 py-2 bg-nubl-surfaceLight border border-nubl-border/60 text-xs text-nubl-ivory hover:text-nubl-gold cursor-pointer"
             >
               <Filter className="w-3.5 h-3.5" />
               <span>تصفية النتائج</span>
@@ -173,7 +173,7 @@ export const ShopPage: React.FC = () => {
                 value={selectedSort}
                 onChange={(e) => setSelectedSort(e.target.value)}
                 aria-label="الترتيب حسب"
-                className="bg-nubl-obsidian border border-nubl-border text-nubl-ivory px-3 py-2 text-xs focus:outline-none focus:border-nubl-gold cursor-pointer"
+                className="bg-nubl-surfaceLight border border-nubl-border/60 text-nubl-ivory px-3 py-2 text-xs focus:outline-none focus:border-nubl-gold cursor-pointer"
               >
                 <option value="featured">المميز أولاً</option>
                 <option value="bestselling">الأكثر مبيعاً</option>
@@ -188,15 +188,15 @@ export const ShopPage: React.FC = () => {
         {/* Main Layout: Sidebar Filters (Desktop) + Product Grid */}
         <div className="grid grid-cols-1 lg:grid-cols-4 gap-8 items-start">
           {/* Desktop Filter Sidebar */}
-          <div className="hidden lg:block bg-nubl-espresso/60 border border-nubl-border p-6 space-y-6">
-            <div className="flex items-center justify-between pb-4 border-b border-nubl-border">
+          <div className="hidden lg:block bg-nubl-surface border border-nubl-border/60 p-6 space-y-6 shadow-sm">
+            <div className="flex items-center justify-between pb-4 border-b border-nubl-border/60">
               <span className="text-xs font-semibold uppercase tracking-wider text-nubl-ivory flex items-center gap-2">
                 <SlidersHorizontal className="w-4 h-4 text-nubl-gold" />
                 تصفية الخيارات
               </span>
               <button
                 onClick={handleResetFilters}
-                className="text-[11px] text-nubl-gold hover:underline flex items-center gap-1"
+                className="text-[11px] text-nubl-gold hover:underline flex items-center gap-1 cursor-pointer"
               >
                 <RotateCcw className="w-3 h-3" />
                 إعادة ضبط
@@ -279,7 +279,7 @@ export const ShopPage: React.FC = () => {
                   عرض {filteredProducts.length} من أصل {products.length} مقتنى
                 </div>
 
-                <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
+                <div className="grid grid-cols-2 md:grid-cols-3 gap-2.5 sm:gap-6">
                   {filteredProducts.map((product) => (
                     <ProductCard key={product.id} product={product} />
                   ))}
@@ -297,16 +297,16 @@ export const ShopPage: React.FC = () => {
             onClick={() => setIsMobileFilterOpen(false)}
             className="fixed inset-0 bg-black/70 backdrop-blur-sm"
           />
-          <div className="fixed inset-y-0 right-0 w-80 max-w-full bg-nubl-espresso border-l border-nubl-border p-6 flex flex-col justify-between">
+          <div className="fixed inset-y-0 right-0 w-80 max-w-full bg-nubl-surface border-l border-nubl-border/70 p-6 flex flex-col justify-between shadow-luxury">
             <div className="space-y-6">
-              <div className="flex items-center justify-between pb-4 border-b border-nubl-border">
+              <div className="flex items-center justify-between pb-4 border-b border-nubl-border/60">
                 <span className="text-sm font-semibold text-nubl-ivory flex items-center gap-2">
                   <Filter className="w-4 h-4 text-nubl-gold" />
                   تصفية النتائج
                 </span>
                 <button
                   onClick={() => setIsMobileFilterOpen(false)}
-                  className="p-1 text-nubl-muted hover:text-nubl-ivory"
+                  className="p-1 text-nubl-muted hover:text-nubl-ivory cursor-pointer"
                 >
                   <X className="w-5 h-5" />
                 </button>
@@ -326,37 +326,37 @@ export const ShopPage: React.FC = () => {
                   value={maxPrice}
                   onChange={(e) => setMaxPrice(Number(e.target.value))}
                   aria-label="الحد الأقصى للسعر للهاتف"
-                  className="w-full accent-nubl-gold"
+                  className="w-full accent-nubl-gold cursor-pointer"
                 />
               </div>
 
               {/* In Stock */}
-              <div className="pt-4 border-t border-nubl-border">
-                <label className="flex items-center justify-between text-xs">
+              <div className="pt-4 border-t border-nubl-border/60">
+                <label className="flex items-center justify-between text-xs cursor-pointer">
                   <span className="text-nubl-ivory">المتوفر في المخزون فقط</span>
                   <input
                     type="checkbox"
                     checked={onlyInStock}
                     onChange={(e) => setOnlyInStock(e.target.checked)}
-                    className="w-4 h-4 accent-nubl-gold"
+                    className="w-4 h-4 accent-nubl-gold cursor-pointer"
                   />
                 </label>
               </div>
             </div>
 
-            <div className="pt-6 border-t border-nubl-border flex gap-3">
+            <div className="pt-6 border-t border-nubl-border/60 flex gap-3">
               <button
                 onClick={() => {
                   handleResetFilters();
                   setIsMobileFilterOpen(false);
                 }}
-                className="flex-1 py-3 bg-nubl-obsidian border border-nubl-border text-xs text-nubl-muted"
+                className="flex-1 py-3 bg-nubl-surfaceLight border border-nubl-border/60 text-xs text-nubl-muted hover:text-nubl-ivory cursor-pointer"
               >
                 إعادة ضبط
               </button>
               <button
                 onClick={() => setIsMobileFilterOpen(false)}
-                className="flex-1 py-3 bg-nubl-gold text-nubl-obsidian text-xs font-semibold"
+                className="flex-1 py-3 bg-nubl-gold text-[#0B0A09] text-xs font-semibold hover:bg-nubl-goldHover cursor-pointer shadow-sm"
               >
                 تطبيق ({filteredProducts.length})
               </button>

@@ -1,5 +1,6 @@
 /** @type {import('tailwindcss').Config} */
 export default {
+  darkMode: 'class',
   content: [
     "./index.html",
     "./src/**/*.{js,ts,jsx,tsx}",
@@ -8,22 +9,22 @@ export default {
     extend: {
       colors: {
         nubl: {
-          obsidian: "#0B0A09",
-          espresso: "#15110D",
-          surface: "#1A1512",
-          surfaceLight: "#241E19",
-          brown: "#2A211A",
-          border: "rgba(185, 151, 91, 0.15)",
-          borderLight: "rgba(255, 255, 255, 0.08)",
-          gold: "#B9975B",
-          goldHover: "#CBAA6E",
-          goldMuted: "#8C7142",
-          goldSoft: "#E8D8B5",
-          ivory: "#F5F1EA",
-          ivoryDark: "#E8E1D5",
+          obsidian: "rgb(var(--nubl-obsidian) / <alpha-value>)",
+          espresso: "rgb(var(--nubl-espresso) / <alpha-value>)",
+          surface: "rgb(var(--nubl-surface) / <alpha-value>)",
+          surfaceLight: "rgb(var(--nubl-surfaceLight) / <alpha-value>)",
+          brown: "rgb(var(--nubl-brown) / <alpha-value>)",
+          border: "var(--nubl-border)",
+          borderLight: "var(--nubl-borderLight)",
+          gold: "rgb(var(--nubl-gold) / <alpha-value>)",
+          goldHover: "rgb(var(--nubl-goldHover) / <alpha-value>)",
+          goldMuted: "rgb(var(--nubl-goldMuted) / <alpha-value>)",
+          goldSoft: "rgb(var(--nubl-goldSoft) / <alpha-value>)",
+          ivory: "rgb(var(--nubl-ivory) / <alpha-value>)",
+          ivoryDark: "rgb(var(--nubl-ivoryDark) / <alpha-value>)",
           white: "#FFFFFF",
-          muted: "#9E978F",
-          subtle: "#6E6760",
+          muted: "rgb(var(--nubl-muted) / <alpha-value>)",
+          subtle: "rgb(var(--nubl-subtle) / <alpha-value>)",
         },
       },
       fontFamily: {
@@ -35,7 +36,7 @@ export default {
         luxury: '0.2em',
       },
       boxShadow: {
-        'luxury': '0 20px 40px -15px rgba(0, 0, 0, 0.7)',
+        'luxury': 'var(--nubl-shadow-luxury)',
         'gold-glow': '0 0 30px -5px rgba(185, 151, 91, 0.25)',
         'gold-glow-lg': '0 0 50px -10px rgba(185, 151, 91, 0.4)',
         'inner-dark': 'inset 0 2px 8px 0 rgba(0, 0, 0, 0.6)',

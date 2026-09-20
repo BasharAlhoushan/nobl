@@ -16,12 +16,16 @@ import {
   X,
   Bell,
   Sparkles,
+  Sun,
+  Moon,
 } from 'lucide-react';
 import { useAdmin } from '../../context/AdminContext';
+import { useTheme } from '../../context/ThemeContext';
 
 export const AdminLayout: React.FC = () => {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
   const { orders, products } = useAdmin();
+  const { theme, toggleTheme } = useTheme();
   const location = useLocation();
 
   const newOrdersCount = orders.filter((o) => o.status === 'new').length;
@@ -156,7 +160,28 @@ export const AdminLayout: React.FC = () => {
             </div>
           </div>
 
-          <div className="flex items-center gap-4">
+          <div className="flex items-center gap-3 sm:gap-4">
+            {/* Theme Toggle Button */}
+            <button
+              type="button"
+              onClick={toggleTheme}
+              className="flex items-center gap-2 px-3 py-1.5 rounded-full bg-nubl-surface border border-nubl-border hover:border-nubl-gold text-xs text-nubl-ivory transition-colors cursor-pointer"
+              title={theme === 'dark' ? 'التحويل إلى الوضع الفاتح' : 'التحويل إلى الوضع الداكن'}
+              aria-label="تبديل مظهر لوحة الإدارة"
+            >
+              {theme === 'dark' ? (
+                <>
+                  <Sun className="w-3.5 h-3.5 text-nubl-gold" />
+                  <span className="hidden sm:inline">الوضع الفاتح</span>
+                </>
+              ) : (
+                <>
+                  <Moon className="w-3.5 h-3.5 text-nubl-gold" />
+                  <span className="hidden sm:inline">الوضع الداكن</span>
+                </>
+              )}
+            </button>
+
             <div className="flex items-center gap-2 text-xs">
               <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
               <span className="text-nubl-muted hidden sm:inline">النظام متصل ونشط</span>

@@ -5,7 +5,7 @@ import { ArrowLeft, Flame, Sparkles } from 'lucide-react';
 
 export const IncenseExperienceSection: React.FC = () => {
   return (
-    <section className="relative min-h-[85vh] py-28 flex items-center bg-nubl-obsidian overflow-hidden">
+    <section className="relative min-h-[85vh] py-28 flex items-center bg-black overflow-hidden">
       {/* Background Dark Photographic Canvas */}
       <div className="absolute inset-0 z-0">
         <img
@@ -14,8 +14,8 @@ export const IncenseExperienceSection: React.FC = () => {
           className="w-full h-full object-cover object-center scale-105"
         />
         {/* Deep dark gradient overlays */}
-        <div className="absolute inset-0 bg-gradient-to-r from-nubl-obsidian via-nubl-obsidian/85 to-nubl-obsidian/40" />
-        <div className="absolute inset-0 bg-gradient-to-t from-nubl-obsidian via-transparent to-nubl-obsidian/60" />
+        <div className="absolute inset-0 bg-gradient-to-r from-black/95 via-black/80 to-black/35" />
+        <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-transparent to-black/50" />
       </div>
 
       <div className="relative z-10 max-w-7xl mx-auto px-6 w-full">
@@ -25,7 +25,7 @@ export const IncenseExperienceSection: React.FC = () => {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.8 }}
-            className="inline-flex items-center gap-2 px-3.5 py-1 bg-nubl-espresso/80 border border-nubl-gold/30 text-nubl-gold text-xs"
+            className="inline-flex items-center gap-2 px-3.5 py-1 bg-black/60 border border-nubl-gold/40 text-[#E8D8B5] text-xs backdrop-blur-sm"
           >
             <Flame className="w-3.5 h-3.5 text-nubl-gold" />
             <span>طقس الطيب العربي</span>
@@ -36,7 +36,7 @@ export const IncenseExperienceSection: React.FC = () => {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.9, delay: 0.1 }}
-            className="text-3xl sm:text-5xl lg:text-6xl font-light text-nubl-ivory tracking-wide leading-tight"
+            className="text-3xl sm:text-5xl lg:text-6xl font-light text-white tracking-wide leading-tight drop-shadow-[0_2px_12px_rgba(0,0,0,0.8)]"
           >
             حين يصبح العطر جزءاً من المكان
           </motion.h2>
@@ -46,7 +46,7 @@ export const IncenseExperienceSection: React.FC = () => {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.8, delay: 0.2 }}
-            className="text-base sm:text-lg text-nubl-ivory/80 font-light leading-relaxed"
+            className="text-base sm:text-lg text-white/85 font-light leading-relaxed drop-shadow-[0_1px_6px_rgba(0,0,0,0.8)]"
           >
             اختيارات من البخور صُممت لتمنح المكان حضوراً لا يُنسى. ننتقي أندر أخشاب العود المروكي والكمبودي المعتق لتفوح في أرجاء مجالسكم بهدوء وأناقة.
           </motion.p>
@@ -57,7 +57,7 @@ export const IncenseExperienceSection: React.FC = () => {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.8, delay: 0.3 }}
-            className="grid grid-cols-2 gap-4 pt-4 pb-2 text-xs text-nubl-goldSoft"
+            className="grid grid-cols-2 gap-4 pt-4 pb-2 text-xs text-[#E8D8B5]"
           >
             <div className="flex items-center gap-2">
               <Sparkles className="w-4 h-4 text-nubl-gold flex-shrink-0" />
@@ -78,7 +78,7 @@ export const IncenseExperienceSection: React.FC = () => {
           >
             <Link
               to="/category/incense"
-              className="inline-flex items-center gap-3 px-8 py-4 bg-nubl-gold hover:bg-nubl-goldHover text-nubl-obsidian font-semibold text-xs tracking-wider transition-colors shadow-gold-glow"
+              className="inline-flex items-center gap-3 px-8 py-4 bg-nubl-gold hover:bg-nubl-goldHover text-[#0B0A09] font-semibold text-xs tracking-wider transition-colors shadow-gold-glow"
             >
               <span>اكتشف البخور</span>
               <ArrowLeft className="w-4 h-4" />
